@@ -16,6 +16,7 @@ const storage = multer.diskStorage({
       
       const ext = path.extname(file.originalname);
       cb(null, Date.now() + ext); // Use a unique filename to avoid overwriting
+      // storeFileInformation("fileInfo");
     },
   });
   

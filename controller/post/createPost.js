@@ -18,7 +18,7 @@ const newPost = async (req, resp) => {
   } = req.body;
 
   const uploadedImages = req.files && req.files;
-  console.log('final',uploadedImages.banner[0].filename)
+  console.log('final',uploadedImages)
 
   //   const newcont=newPara.find((ele)=>ele==undefined)
   const imgalt =await alt && JSON.parse(alt);  

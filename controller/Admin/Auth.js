@@ -3,6 +3,7 @@ const jwt=require('jsonwebtoken')
 const { query, validationResult,body } = require('express-validator')
 const postModal=require('../../modal/postModal')
 
+
 const Login=async(req,resp)=>{
   const {Email,Password}=req.body;
    try{
@@ -27,7 +28,7 @@ const Login=async(req,resp)=>{
 
 const getAllPost=async(req,resp)=>{
   try{
-   const result=await postModal.find({})
+   const result=await postModal.find({}).sort({createdAt:-1});
    if(result){
     resp.status(200).send(result)
    }
@@ -67,7 +68,7 @@ const updatePost=async(req,resp)=>{
         }
         return ele;
       })
-      console.log("banner",req.files)
+      
       const metadata={description:otherthings.description,title:otherthings.title} 
 
       const result=await postModal.findOneAndUpdate({_id:otherthings.id},{
@@ -79,10 +80,18 @@ const updatePost=async(req,resp)=>{
        category:otherthings.category
       },{ new: true },)
       
-      console.log("content",result)
+      resp.status(200).send({postUpdated:true})
     }catch(error){
      console.log('error in updating post in backend',error)
     } 
   }
+
+// const deletePost=async(req,resp)=>{
+//   try{
+   
+//   }catch(error){
+//     console.log("error in deleting post in backend",error)
+//   }
+// }  
 
 module.exports={Login,getAllPost,getPost,updatePost}

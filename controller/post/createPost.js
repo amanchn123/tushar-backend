@@ -17,15 +17,14 @@ const newPost = async (req, resp) => {
     banner
   } = req.body;
 
-  const uploadedImages = req.files && req.files;
-  console.log('final',uploadedImages)
+  const uploadedImages = req?.files!==null?req.files:null;
 
   //   const newcont=newPara.find((ele)=>ele==undefined)
   const imgalt =await alt && JSON.parse(alt);  
 
   const content =await final && JSON.parse(final).map((ele)=>{
     if(ele=="image"){
-      let img=uploadedImages&& uploadedImages.images.shift()
+      let img=uploadedImages?.images?.shift()
       let alt=imgalt&& imgalt.shift()
       ele={img,alt}
       return ele;
@@ -33,7 +32,6 @@ const newPost = async (req, resp) => {
     return ele;
   })
 
-  console.log("content",content.length)
 
   const metadata = { title, description };
   const validate = validationResult(req);
@@ -64,7 +62,7 @@ const newPost = async (req, resp) => {
 const postDetails = async (req, resp) => {
   const { params } = req.body;
   const key = (await params) ? Object.values(params) : "";
-  console.log("slug", key);
+
   try {
     const response = await postModal.findOne({ slug: key });
     resp.status(200).send(response);
@@ -81,12 +79,11 @@ const getPost = async (req, resp) => {
       resp.status(200).send(result);
     } else if (subCategory) {
       const result = await postModal.find({ subCategory }).sort({createdAt:-1});
-      console.log("result",result)
       resp.status(200).send(result);
 
     }
   } catch (error) {
-    console.log("error in getting post in backend");
+    console.log("error in getting post in backend",error);
   }
 };
 

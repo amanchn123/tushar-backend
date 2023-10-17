@@ -2,8 +2,6 @@ const jwt=require('jsonwebtoken')
 
 const Verifiy=async(req,resp,next)=>{
     const token=await req.headers.authorization;
-    console.log(token)
-
     try{
       
       const check=await jwt.verify(token,process.env.SECRET_KEY_JWT,((err,valid)=>{

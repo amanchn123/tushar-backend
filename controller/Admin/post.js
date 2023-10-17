@@ -1,8 +1,13 @@
-// const AdminModal = require('../../modal/AdminModal')
-// const jwt=require('jsonwebtoken')
-// const { query, validationResult,body } = require('express-validator')
-// const postModal=require('../../modal/postModal')
+const AdminModal = require('../../modal/AdminModal')
+const jwt=require('jsonwebtoken')
+const { query, validationResult,body } = require('express-validator')
 
+const uploadVideo=()=>{
+    try{
+       
+    }catch(error){
+        console.log('error in uploading video')
+    }
+}
 
-
-//   module.exports={updatePost}
+module.exports={uploadVideo}

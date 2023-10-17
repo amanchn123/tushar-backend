@@ -6,6 +6,8 @@ const { getPost } = require('../controller/Admin/Auth')
 const {updatePost}=require('../controller/Admin/Auth') 
 const multer=require('multer')
 const path = require('path'); // Import the path module
+const  {uploadVideo} =require('../controller/Admin/post')
+const Verifiy = require('../verify')
 
 const isValidFileType = (file) => {
   // Define an array of allowed MIME types
@@ -31,7 +33,7 @@ const isValidFileType = (file) => {
 const storage = multer.diskStorage({
     destination: (req,file, cb) => {
 
-      cb(null, 'uploads'); // Define the folder where images will be stored
+      cb(null, 'images'); // Define the folder where images will be stored
     },
     filename: (req, file, cb) => {
       
@@ -50,8 +52,9 @@ const upload = multer({ storage, fileFilter: (req, file, cb) => {
 }, })
 
 router.post('/adminLogin',body("Email").trim().isEmail(),body("Password").notEmpty(),Login)
-router.get('/admingetpost',getAllPost)
+router.get('/admingetpost',Verifiy,getAllPost)
 router.get('/getpost',getPost)
-router.post('/updatepost',upload.fields([{name:"images"},{name:"updatedimage"},{name:"banner"}]),updatePost)
+router.get('/uploadVideos',upload.single("videos"),uploadVideo)
+router.post('/updatepost',upload.fields([{name:"images"},{name:"updatedimage"},{name:"banner"}]),Verifiy,updatePost)
 
 module.exports=router;

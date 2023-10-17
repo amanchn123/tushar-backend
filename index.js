@@ -12,6 +12,7 @@ app.use(cors({origin:"*"}))
 
 app.use('/api',adminController)
 app.use('/api',postController)
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('images'));
 
 app.listen(5000)
+

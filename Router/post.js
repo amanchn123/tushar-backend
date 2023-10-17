@@ -10,7 +10,7 @@ const path = require('path'); // Import the path module
 const storage = multer.diskStorage({
     destination: (req,file, cb) => {
 
-      cb(null, 'uploads'); // Define the folder where images will be stored
+      cb(null, 'images'); // Define the folder where images will be stored
     },
     filename: (req, file, cb) => {
       
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
   
 const upload = multer({ storage })
 
-router.post('/createNewPost',upload.fields([{name:"images"},{name:"banner"}]),newPost)
+router.post('/createNewPost',upload.fields([{name:"images"},{name:"banner"}]),verify,newPost)
 router.post('/getPost',getPost)
 router.post('/getpostdetails',body('slug').notEmpty(),postDetails)
 module.exports=router;

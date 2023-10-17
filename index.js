@@ -14,5 +14,6 @@ app.use('/api',adminController)
 app.use('/api',postController)
 app.use('/uploads', express.static('images'));
 
-app.listen(5000)
+const PORT=process.env.PORT
+app.listen(PORT)
 

@@ -8,7 +8,7 @@ const connectMongoDb=require('./connection')
 const adminController=require('./Router/admin')
 const postController=require('./Router/post')
 connectMongoDb()
-app.use(cors({origin:"*"}))
+app.use(cors({origin:"dainikloksandarbh.com"}))
 
 app.use('/api',adminController)
 app.use('/api',postController)

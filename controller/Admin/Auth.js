@@ -53,6 +53,23 @@ const getPost=async(req,resp)=>{
   }
 }
 
+const DeletePost=async(req,resp)=>{
+  const {id}=req.body;
+  //  console.log('reeeee',req.body)
+  try{
+   console.log("iddddddddd",id)
+   const result=await postModal.deleteOne({_id:id})
+   console.log(result)
+   if(result.deletedCount == 1){
+    resp.status(200).send(result.deletedCount)
+   }else{
+    resp.status(200).send(result.deletedCount)
+   }
+  }catch(error){
+    console.log("error in deleting post",error)
+  }
+}
+
 const updatePost=async(req,resp)=>{
   
   const {final,...otherthings}=req.body;
@@ -94,4 +111,4 @@ const updatePost=async(req,resp)=>{
 //   }
 // }  
 
-module.exports={Login,getAllPost,getPost,updatePost}
+module.exports={Login,getAllPost,getPost,updatePost,DeletePost}

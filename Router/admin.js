@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {Login,getAllPost}=require('../controller/Admin/Auth')
+const {Login,getAllPost, DeletePost}=require('../controller/Admin/Auth')
 const { query, validationResult,body } = require('express-validator')
 const { getPost } = require('../controller/Admin/Auth')
 const {updatePost}=require('../controller/Admin/Auth') 
@@ -54,6 +54,7 @@ const upload = multer({ storage, fileFilter: (req, file, cb) => {
 router.post('/adminLogin',body("Email").trim().isEmail(),body("Password").notEmpty(),Login)
 router.get('/admingetpost',Verifiy,getAllPost)
 router.get('/getpost',getPost)
+router.post('/deletepost',Verifiy,DeletePost)
 router.get('/uploadVideos',upload.single("videos"),uploadVideo)
 router.post('/updatepost',upload.fields([{name:"images"},{name:"updatedimage"},{name:"banner"}]),Verifiy,updatePost)
 

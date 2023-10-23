@@ -15,5 +15,10 @@ app.use('/api',postController)
 app.use('/uploads', express.static('images'));
 
 const PORT=process.env.PORT
-app.listen(PORT)
+const host = '0.0.0.0'; // Listen on all available network interfaces
+
+server.listen(PORT, host, () => {
+  console.log(`Server is running on http://${host}:${PORT}`);
+});
+// app.listen(PORT)
 

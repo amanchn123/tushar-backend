@@ -8,7 +8,7 @@ const connectMongoDb=require('./connection')
 const adminController=require('./Router/admin')
 const postController=require('./Router/post')
 connectMongoDb()
-app.use(cors({origin:"http://dainikloksandarbh.com"}))
+app.use(cors({origin:"https://dainikloksandarbh.com"}))
 
 app.use('/api',adminController)
 app.use('/api',postController)
@@ -18,7 +18,7 @@ const PORT=process.env.PORT
 const host = '0.0.0.0'; // Listen on all available network interfaces
 
 app.listen(PORT, host, () => {
-  console.log(`Server is running on http://${host}:${PORT}`);
+  console.log(`Server is running on https://${host}:${PORT}`);
 });
 // app.listen(PORT)
 

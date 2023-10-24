@@ -57,14 +57,15 @@ const DeletePost=async(req,resp)=>{
   const {id}=req.body;
   //  console.log('reeeee',req.body)
   try{
-   console.log("iddddddddd",id)
+
    const result=await postModal.deleteOne({_id:id})
-   console.log(result)
-   if(result.deletedCount == 1){
-    resp.status(200).send(result.deletedCount)
+   console.log(typeof(result.deletedCount))
+   if(result.deletedCount == "1"){
+    resp.sendStatus(200).json(result.deletedCount)
    }else{
-    resp.status(200).send(result.deletedCount)
+    console.log("unable to delete")
    }
+   
   }catch(error){
     console.log("error in deleting post",error)
   }

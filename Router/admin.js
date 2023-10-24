@@ -6,7 +6,7 @@ const { getPost } = require('../controller/Admin/Auth')
 const {updatePost}=require('../controller/Admin/Auth') 
 const multer=require('multer')
 const path = require('path'); // Import the path module
-const  {uploadVideo} =require('../controller/Admin/post')
+// const  {uploadVideo} =require('../controller/Admin/post')
 const Verifiy = require('../verify')
 
 const isValidFileType = (file) => {
@@ -55,7 +55,7 @@ router.post('/adminLogin',body("Email").trim().isEmail(),body("Password").notEmp
 router.get('/admingetpost',Verifiy,getAllPost)
 router.get('/getpost',getPost)
 router.post('/deletepost',Verifiy,DeletePost)
-router.get('/uploadVideos',upload.single("videos"),uploadVideo)
+// router.get('/uploadVideos',upload.single("videos"),uploadVideo)
 router.post('/updatepost',upload.fields([{name:"images"},{name:"updatedimage"},{name:"banner"}]),Verifiy,updatePost)
 
 module.exports=router;

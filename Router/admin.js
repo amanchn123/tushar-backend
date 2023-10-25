@@ -55,7 +55,6 @@ router.post('/adminLogin',body("Email").trim().isEmail(),body("Password").notEmp
 router.get('/admingetpost',Verifiy,getAllPost)
 router.get('/getpost',getPost)
 router.post('/deletepost',Verifiy,DeletePost)
-// router.get('/uploadVideos',upload.single("videos"),uploadVideo)
 router.post('/updatepost',upload.fields([{name:"images"},{name:"updatedimage"},{name:"banner"}]),Verifiy,updatePost)
 
 module.exports=router;

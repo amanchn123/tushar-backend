@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const {newPost,getPost, postDetails}=require('../controller/post/createPost')
+const {newPost,getPost, postDetails, searchPost}=require('../controller/post/createPost')
 const { query, validationResult,body } = require('express-validator')
 const verify =require('../verify')
 const multer=require('multer')
@@ -24,5 +24,6 @@ const upload = multer({ storage })
 
 router.post('/createNewPost',upload.fields([{name:"images"},{name:"banner"}]),verify,newPost)
 router.post('/getPost',getPost)
+router.post('/searchPost',searchPost)
 router.post('/getpostdetails',body('slug').notEmpty(),postDetails)
 module.exports=router;

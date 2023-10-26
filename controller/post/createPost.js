@@ -87,4 +87,20 @@ const getPost = async (req, resp) => {
   }
 };
 
-module.exports = { newPost, getPost, postDetails };
+const searchPost=async(req,resp)=>{
+  
+  try{
+    const {naming}=req.body  
+    // const result=await universityModal.find({  $or: [
+    //   { name: { $regex: naming, $options: 'i' } },
+    //   { heading: { $regex: naming, $options: 'i' } },
+    // ],})
+
+    const result=await postModal.find({heading:{$regex:naming,$options:"i"}})
+    resp.send(result)
+  }catch(error){
+    console.log('error in searching post',error)
+  }
+}
+
+module.exports = { newPost, getPost, postDetails,searchPost};

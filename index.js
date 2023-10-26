@@ -8,6 +8,7 @@ const connectMongoDb=require('./connection')
 const adminController=require('./Router/admin')
 const postController=require('./Router/post')
 const uploadVideo=require('./Router/uploadVideos')
+const userAuth=require('./Router/user')
 const eNews=require('./Router/e_news')
 connectMongoDb()
 app.use(cors({origin:"https://dainikloksandarbh.com"}))
@@ -18,6 +19,7 @@ app.use('/api',adminController)
 app.use('/api',postController)
 app.use('/api',uploadVideo)
 app.use('/api',eNews)
+app.use('/api',userAuth)
 app.use('/uploads', express.static('images'));
 
 const PORT=process.env.PORT

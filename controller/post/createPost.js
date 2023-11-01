@@ -87,6 +87,18 @@ const getPost = async (req, resp) => {
   }
 };
 
+const getExtraPost = async (req, resp) => {
+  try {
+
+      const result = await postModal.find({ subCategory:"null" }).sort({createdAt:-1}).limit(4);
+      resp.status(200).send(result);
+   
+  } catch (error) {
+    console.log("error in getting post in backend",error);
+  }
+};
+
+
 const searchPost=async(req,resp)=>{
   
   try{
@@ -103,4 +115,4 @@ const searchPost=async(req,resp)=>{
   }
 }
 
-module.exports = { newPost, getPost, postDetails,searchPost};
+module.exports = { newPost, getPost, postDetails,searchPost,getExtraPost};

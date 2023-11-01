@@ -4,7 +4,7 @@ const post_schema=mongoose.Schema({
     slug:String,
     metadata:{title:String,description:String},
     category:String,
-    subCategory:String,
+    subCategory:{type:String,default:null},
     content:[mongoose.Schema.Types.Mixed],
     alt:[mongoose.Schema.Types.Mixed],
     final:[],

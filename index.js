@@ -11,7 +11,7 @@ const uploadVideo=require('./Router/uploadVideos')
 const userAuth=require('./Router/user')
 const eNews=require('./Router/e_news')
 connectMongoDb()
-app.use(cors({origin:"https://dainikloksandarbh.com"}))
+app.use(cors({origin:["https://dainikloksandarbh.com","https://www.dainikloksandarbh.com"]}))
 // app.use(cors({origin:"*"}))
 
 app.use('/backendvideos', express.static('videos'));

@@ -10,6 +10,7 @@ const post_schema=mongoose.Schema({
     final:[],
     heading:String,
     banner:String,
+    author:String
     
 },{
     timestamps:true

@@ -6,6 +6,7 @@ const newPost = async (req, resp) => {
 
   const {
     slug,
+    author,
     title,
     description,
     category,
@@ -47,6 +48,7 @@ const newPost = async (req, resp) => {
       category,
       heading,
       subCategory,
+      author,
       banner:uploadedImages.banner[0].filename
     }).save();
     if (result) {
